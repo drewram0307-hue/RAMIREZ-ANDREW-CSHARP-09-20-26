@@ -1,1 +1,116 @@
+C# MONOBEHAVIOUR
+// Concept: A game character represented as data + behaviour (a clss).
+// CODE character
+using system;
+class character
+{
+	public string name;
+	public int X, Y; //position on the map
+	public int Width, Height; //bounding shape
+	public in health;
 
+	// Constructor: how a character is "born" public Character(string name, int y, int width, int height, int health)
+
+	{
+		Name =name;
+		X = x;
+		Y= y;
+		Width = width;
+		Height = height;
+		health = health;
+
+	}
+ // Behaviour: methods define what the character can do public void Moveto(int newX, int newY)
+    {
+		X = newX;
+		Y = newY;
+		Console.Writeline($"{Name} moved to {X}, {Y})");
+	}
+	public void TakeDamage(int amout)
+	{
+		Health -= amount: // Decreased of your health
+		Health = Math.Max(Health, 0);
+		Console.Writeline($"{Name} tool {amount} damage.Health:{Health}");
+	}
+	public avoid PrintShape()
+	{
+		//Draw the character as an ASCII rectangle for (int row = 0; row < Height' row++)
+	{
+		Console.Writeline(New string("#", Width));
+	}
+	}
+
+//Movement for Gridbased Character
+class Program
+{
+	static void main()
+	{
+		Character hero = new Character("Hero", 0, 0, 3, 2, 100);
+		hero:PrintShape();
+		hero.Moveto(5, 3);
+		hero.TakeDamage(25);
+
+	}
+
+}
+
+//GRID BASE Movement
+//GAME OBJECT
+using unityEngine;
+public class Gridmovement : MONOBEHAVIOUR
+{
+	public float tileSize=0f; // size of oen grid cell
+	public float moveSpeed = 10f // how fast5 we glide between
+	tiles(feel, not logic)
+	public Vector3 targetPosition
+	private bool isMoving = false;
+
+	void Start()
+	{
+		// Snap starting position to the grid so everything lines up
+
+		target position = SnapToGrid(transfom.position);
+		transform.position = targetPosition
+	}
+	void Update()
+	{
+		if(!isMoving)'
+		{
+			HandleInput();
+		}
+		else
+	  {
+		//Smoothly guide to the next line
+		transform.position=Vector3.MoveTowards(transform.Position.moveSpeed * Tile.deltaTime);
+		if (Vector 3.Distance(transform.position, targetPosition)
+		<0.001f)
+		{
+			transform.positon = targetPosition;
+			isMoving = false;
+		}
+	  }
+
+
+	}
+}
+
+void HandleInput
+{
+	Vectors direction = vector.zero;
+
+	if(Input.GetKeyDown(KeyCode.W)) direction = Vector.up;
+	else if(Input.GetKeyDown(KeyCode.S)) direction = Vector3.down;
+	else if(Input.GetKeyDown(KeyCode.A)) directon = Vector3.left;
+	else if(Input.GetKeyDown(KeyCode.D)) direction = Vector3.right;
+
+	if (direction 1= Vector3.zero)
+	{
+		targetPosition = transform.position + direction * tileSize;
+		isMoving = true;
+		
+
+
+
+
+	
+					 
